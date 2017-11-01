@@ -1,9 +1,11 @@
-import javax.swing.*; 
-import java.awt.event.*; 
-import java.awt.*; 
-import java.awt.image.*; 
-import java.io.*; 
-import javax.imageio.*; 
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+
+import javax.swing.JFrame;
+import javax.swing.JMenu;
+import javax.swing.JMenuBar;
+import javax.swing.JMenuItem;
+import javax.swing.JOptionPane; 
 
 public class ImageEditorFrame extends JFrame{ 
 	public ImageEditorFrame(){ 
@@ -11,6 +13,29 @@ public class ImageEditorFrame extends JFrame{
 		setSize(400, 300);
 		setVisible(true);
 	}
+	private void createMenuBar(){ 
+		JMenuBar menuBar = new JMenuBar(); 
+		setJMenuBar(menuBar); 
+		JMenu menuFile = new JMenu("File"); 
+		menuBar.add(menuFile); 
+		JMenuItem menuItemOpen = new JMenuItem("Open"); 
+		menuFile.add(menuItemOpen); 
+		
+	
+		menuItemOpen.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e){
+				onOpen();
+				}
+			} ); 
+	}
+		
+	private void onOpen(){
+			JOptionPane.showMessageDialog(this, "Open Selected");
+		}
+	
+
+	
+
 	public static void main(String[] args) {
 		new ImageEditorFrame();
 	}
